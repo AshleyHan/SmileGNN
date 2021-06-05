@@ -8,33 +8,6 @@ p_data = data
 print(data.columns.values.tolist())
 print(len(data))
 
-'''
-charset = set("".join(list(data.smiles))+"!E")
-char_to_int = dict((c,i) for i,c in enumerate(charset))
-int_to_char = dict((i,c) for i,c in enumerate(charset))
-embed = max([len(smile) for smile in data.smiles]) + 5
-print (str(charset))
-print(len(charset), embed)
-
-
-def vectorize(smiles):
-    one_hot = np.zeros((smiles.shape[0], embed, len(charset)), dtype=np.int8)
-    for i, smile in enumerate(smiles):
-        # encode the startchar
-        one_hot[i, 0, char_to_int["!"]] = 1
-        # encode the rest of the chars
-        for j, c in enumerate(smile):
-            one_hot[i, j + 1, char_to_int[c]] = 1
-        # Encode endchar
-        one_hot[i, len(smile) + 1:, char_to_int["E"]] = 1
-    # Return two, one for input and the other for output
-    return one_hot[:, 0:-1, :], one_hot[:, 1:, :]
-
-X, _ = vectorize(data.smiles)
-print()
-'''
-
-#https://www.zhihu.com/topic/20058652/top-answers
 smiles=[]
 for i in data['SMILES']:
     smiles.append(i)
@@ -134,17 +107,16 @@ def encode_smiles(smi,vocalbulary):
 
 
 from sklearn.decomposition import PCA
-def calculate_pca(similarity_profile_file,output_file,p_data):
+def calculate_pca(profile_file,output_file,p_data):
     pca = PCA(copy=True, iterated_power='auto', n_components=96, random_state=None,
               svd_solver='auto', tol=0.0, whiten=False)
-    df = pd.read_csv(similarity_profile_file, index_col=0)
+    df = pd.read_csv(profile_file, index_col=0)
 
     X = df.values
     X = pca.fit_transform(X)
 
     new_df = pd.DataFrame(X, columns=['PC_%d' % (i + 1) for i in range(96)], index=df.index)
     print(new_df.shape)
-    #new_df = pd.DataFrame(X, columns=['PC_%d' % (i + 1) for i in range(2)], index=df.index)
     new_df['dbid'] = p_data['DrugBank ID'].values.tolist()
     new_df['keggid'] = p_data['KEGG Drug ID'].values.tolist()
     print(new_df.head())
