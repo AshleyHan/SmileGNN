@@ -5,11 +5,11 @@ from keras.models import Model
 from keras import backend as K  # use computable function
 from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, precision_recall_curve
 import sklearn.metrics as m
-from KGNN_smiles.layers import Aggregator
-from KGNN_smiles.callbacks import KGCNMetric
-from KGNN_smiles.models.base_model import BaseModel
+from SmileGNN.layers import Aggregator
+from SmileGNN.callbacks import KGCNMetric
+from SmileGNN.models.base_model import BaseModel
 # from tensorflow.keras.layers import Layer
-from KGNN_smiles.layers.feature import *
+from SmileGNN.layers.feature import *
 from tensorflow import sparse_tensor_dense_matmul
 
 
