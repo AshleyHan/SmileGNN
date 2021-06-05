@@ -171,31 +171,6 @@ class KGCN(BaseModel):
         neighbor_embed = K.sum(weighted_ent, axis=2)
         return neighbor_embed
 
-    def getattention(self, input_drug):
-        def weight_variable_glorot(shape):
-            input_dim = shape[0]
-            output_dim = shape[1]
-            init_range = np.sqrt(32.0 / (input_dim + output_dim))
-            initial = K.random_uniform(
-                shape,
-                minval=-init_range,
-                maxval=init_range,
-                dtype=tf.float32
-            )
-            return K.variable(initial)
-
-        def weight_variable(shape):
-            initial = K.truncated_normal(shape, stddev=0.1)
-            return K.variable(initial)
-
-        att_W = weight_variable_glorot([self.config.entity_vocab_size, self.config.batch_size])
-        # [entity_vocab_size,batch_size]*[batch_size,1]
-        drug_W = tf.matmul(att_W, K.cast(input_drug, dtype='float32'))
-        # [entity_vocab_size,entity_vocab_size]*[entity_vocab_size,1]
-        drug_att = sparse_tensor_dense_matmul(self.config.drug_sim, drug_W)
-
-        return K.sigmoid(drug_att)
-
     def getfeaturetensor(self):
         drug = self.config.drug_feature
         return K.variable(drug,dtype='float32')
