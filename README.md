@@ -1,5 +1,5 @@
 # SmileGNN
-
+![Aaron Swartz](https://raw.githubusercontent.com/AshleyHan/SmileGNN/main/SmileGNN.PNG?token=ALSMMTRMCDUONMYXFEPW7Z3AXN4K2)
 
 ## Requirement
 See requirement.txt
