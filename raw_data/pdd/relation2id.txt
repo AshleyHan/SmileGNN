@@ -1,0 +1,4 @@
+3
+http://pdd.wangmengsd.com/property/take_drugbank_id 1
+http://pdd.wangmengsd.com/property/interact 2
+http://pdd.wangmengsd.com/property/diagnoses_icd9 3
