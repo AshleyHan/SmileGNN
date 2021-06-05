@@ -5,16 +5,16 @@ import gc
 import time
 import tensorflow as tf
 import scipy.sparse as sp
-from KGNN_smiles.layers.feature import *
+from SmileGNN.layers.feature import *
 
 import numpy as np
 from collections import defaultdict
 from keras import backend as K
 from keras import optimizers
 
-from KGNN_smiles.utils import load_data, pickle_load, format_filename, write_log
-from KGNN_smiles.models import KGCN
-from KGNN_smiles.config import ModelConfig, PROCESSED_DATA_DIR,  ENTITY_VOCAB_TEMPLATE, \
+from SmileGNN.utils import load_data, pickle_load, format_filename, write_log
+from SmileGNN.models import KGCN
+from SmileGNN.config import ModelConfig, PROCESSED_DATA_DIR,  ENTITY_VOCAB_TEMPLATE, \
     RELATION_VOCAB_TEMPLATE, ADJ_ENTITY_TEMPLATE, ADJ_RELATION_TEMPLATE, LOG_DIR, PERFORMANCE_LOG, \
     DRUG_VOCAB_TEMPLATE, DRUG_FEATURE_TEMPLATE,DRUG_SIM_TEMPLATE
 
