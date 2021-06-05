@@ -7,18 +7,18 @@ import re
 from collections import defaultdict
 
 
-sys.path.append('/home/hanxt/SmileGNN/')  # add the env path
+sys.path.append('/home/.../SmileGNN/')  # add the env path
 from sklearn.model_selection import train_test_split, StratifiedKFold
-from KGNN_smiles.main import train
-from KGNN_smiles.layers.feature import *
+from SmileGNN.main import train
+from SmileGNN.layers.feature import *
 
-from KGNN_smiles.config import DRUG_EXAMPLE, RESULT_LOG, PROCESSED_DATA_DIR, LOG_DIR, MODEL_SAVED_DIR, ENTITY2ID_FILE, \
+from SmileGNN.config import DRUG_EXAMPLE, RESULT_LOG, PROCESSED_DATA_DIR, LOG_DIR, MODEL_SAVED_DIR, ENTITY2ID_FILE, \
     KG_FILE, \
     EXAMPLE_FILE, DRUG_VOCAB_TEMPLATE, ENTITY_VOCAB_TEMPLATE, \
     RELATION_VOCAB_TEMPLATE, SEPARATOR, THRESHOLD, TRAIN_DATA_TEMPLATE, DEV_DATA_TEMPLATE, DRUG_FEATURE_TEMPLATE, \
     DRUG_SIM_TEMPLATE, \
     TEST_DATA_TEMPLATE, ADJ_ENTITY_TEMPLATE, ADJ_RELATION_TEMPLATE, ModelConfig, NEIGHBOR_SIZE
-from KGNN_smiles.utils import pickle_dump, format_filename, write_log, pickle_load
+from SmileGNN.utils import pickle_dump, format_filename, write_log, pickle_load
 
 
 def read_entity2id_file(file_path: str, drug_vocab: dict, entity_vocab: dict,dataset:str):
@@ -110,6 +110,7 @@ def read_kg(file_path: str, entity_vocab: dict, relation_vocab: dict, neighbor_s
         n_neighbor = len(all_neighbors)
         if n_neighbor == 0:
             print(entity_id)
+            continue
         sample_indices = np.random.choice(
             n_neighbor,
             neighbor_sample_size,
