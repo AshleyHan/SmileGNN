@@ -6,7 +6,7 @@ import numpy as np
 from keras.callbacks import Callback
 from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, average_precision_score,precision_recall_curve
 import sklearn.metrics as m
-from KGNN_smiles.utils import write_log
+from SmileGNN.utils import write_log
 
 #添加指标：ACC, AUPR, AUC-ROC, F1 +std
 
