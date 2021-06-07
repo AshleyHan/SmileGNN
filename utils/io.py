@@ -1,11 +1,3 @@
-'''
-@Author: your name
-@Date: 2020-01-06 17:08:52
-@LastEditTime : 2020-01-07 13:25:31
-@LastEditors  : Please set LastEditors
-@Description: In User Settings Edit
-@FilePath: /KGCN_Keras-master/utils/io.py
-'''
 # -*- coding: utf-8 -*-
 
 import os
